@@ -7,7 +7,8 @@
       },
       "includePath": [
         "/opt/ros/noetic/include/**",
-        "/usr/include/**"
+        "/usr/include/**",
+        "/home/whf/Documents/R550/src/r550_gazebo/include/**"
       ],
       "name": "ROS",
       "intelliSenseMode": "gcc-x64",

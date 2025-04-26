@@ -14,11 +14,11 @@
     <arg name="paused" value="false"/>
   </include>
 
-<!-- Load robot description -->
-<include file="$(find r550_gazebo)/launch/Load_SDF.launch" />
+  <!-- Load robot description -->
+  <include file="$(find r550_gazebo)/launch/r550_rviz.launch" />
 
   <!-- Spawn the robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-        args="-urdf -model nexus_4wd_mecanum -param robot_description -x 0 -y 0 -z 0.5" />
+        args="-urdf -model r550 -param robot_description -x 0 -y 0 -z 0.5" />
 
 </launch>

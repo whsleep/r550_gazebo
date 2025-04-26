@@ -1,0 +1,11 @@
+<launch>
+ <!-- 发布URDF到/robot_description -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find r550_gazebo)/xacro/r550.xacro" />
+    <!-- 启动RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find r550_gazebo)/rviz/rviz.rviz" />
+
+    <!-- 启动机器人状态发布器 -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+     
+</launch>
