@@ -1,0 +1,345 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="wheeltec">
+    <!-- Base Link -->
+    <link name="base_link">
+      <visual name="base_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="base_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>2.5</mass>
+        <inertia>
+          <ixx>0.01</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>0.01</iyy> <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Right Front Wheel Link -->
+    <link name="right_front_wheel_link">
+      <visual name="right_front_visual">
+        <pose>0.0715 -0.09 -0.027 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="right_front_collision">
+        <pose>0.0715 -0.09 -0.027 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0005</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>0.0005</iyy> <iyz>0</iyz>
+          <izz>0.0005</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name="right_front_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>right_front_wheel_link</child>
+      <pose>0.0715 -0.09 -0.027 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1000</lower>
+          <upper>1000</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Left Front Wheel Link -->
+    <link name="left_front_wheel_link">
+      <visual name="left_front_visual">
+        <pose>0.072 0.09 -0.027 0 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="left_front_collision">
+        <pose>0.072 0.09 -0.027 0 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0005</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>0.0005</iyy> <iyz>0</iyz>
+          <izz>0.0005</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name="left_front_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>left_front_wheel_link</child>
+      <pose>0.072 0.09 -0.027 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1000</lower>
+          <upper>1000</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Right Rear Wheel Link -->
+    <link name="right_rear_wheel_link">
+      <visual name="right_rear_visual">
+        <pose>-0.1 -0.09 -0.027 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="right_rear_collision">
+        <pose>-0.1 -0.09 -0.027 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0005</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>0.0005</iyy> <iyz>0</iyz>
+          <izz>0.0005</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name="right_rear_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>right_rear_wheel_link</child>
+      <pose>-0.1 -0.09 -0.027 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1000</lower>
+          <upper>1000</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Left Rear Wheel Link -->
+    <link name="left_rear_wheel_link">
+      <visual name="left_rear_visual">
+        <pose>-0.1 0.09 -0.027 0 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="left_rear_collision">
+        <pose>-0.1 0.09 -0.027 0 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/right_front_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0005</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>0.0005</iyy> <iyz>0</iyz>
+          <izz>0.0005</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name="left_rear_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>left_rear_wheel_link</child>
+      <pose>-0.1 0.09 -0.027 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1000</lower>
+          <upper>1000</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Differential Drive Plugin -->
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>wheeltec</namespace> <!-- No leading slash -->
+        <remapping>odom:=odom</remapping>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+      </ros>
+      <left_joint>left_rear_wheel_joint</left_joint>
+      <right_joint>right_rear_wheel_joint</right_joint>
+      <wheel_separation>0.18</wheel_separation>
+      <wheel_diameter>0.075</wheel_diameter>
+      <max_wheel_torque>10.0</max_wheel_torque>
+      <max_wheel_acceleration>5.0</max_wheel_acceleration>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+    </plugin>
+
+    <!-- C70 Camera Link -->
+    <link name="c70_link">
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>1e-5</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>1e-5</iyy> <iyz>0</iyz>
+          <izz>1e-5</izz>
+        </inertia>
+      </inertial>
+      <visual name="c70_visual">
+        <pose>0.13 0 0.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/camera_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="c70_collision">
+        <pose>0.13 0 0.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/camera_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <sensor name="c70_camera" type="camera">
+        <pose>0.13 0 0.1 0 0 0</pose>
+        <always_on>true</always_on>
+        <update_rate>25.0</update_rate>
+        <camera>
+          <horizontal_fov>1.125</horizontal_fov>
+          <image>
+            <format>R8G8B8</format>
+            <width>1280</width>
+            <height>720</height>
+          </image>
+          <clip>
+            <near>0.05</near>
+            <far>8.0</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name="c70_camera_controller" filename="libgazebo_ros_camera.so">
+          <ros>
+            <namespace>c70</namespace> <!-- No leading slash -->
+            <remapping>image_raw:=image_raw</remapping>
+            <remapping>camera_info:=camera_info</remapping>
+          </ros>
+          <frame_name>c70_frame_optical</frame_name>
+        </plugin>
+      </sensor>
+    </link>
+    <joint name="c70_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>c70_link</child>
+      <pose>0.13 0 0.1 0 0 0</pose>
+    </joint>
+    <link name="c70_frame_optical" />
+    <joint name="c70_optical_joint" type="fixed">
+      <parent>c70_link</parent>
+      <child>c70_frame_optical</child>
+      <pose>0 0 0 -1.5708 0 -1.5708</pose>
+    </joint>
+
+    <!-- RPLIDAR Link (Adapted to 镭神N10P) -->
+    <link name="rplidar_link">
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-6</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>1e-6</iyy> <iyz>0</iyz>
+          <izz>1e-6</izz>
+        </inertia>
+      </inertial>
+      <visual name="rplidar_visual">
+        <pose>-0.06 -0.01 0.15 0 0 4.712385</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/rplidar_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="rplidar_collision">
+        <pose>-0.06 -0.01 0.15 0 0 4.712385</pose>
+        <geometry>
+          <mesh>
+            <uri>file://../meshes/mini_4wd/meshes/mini_4wd/rplidar_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <sensor name="rplidar" type="ray">
+        <pose>-0.06 -0.01 0.15 0 0 4.712385</pose>
+        <visualize>true</visualize>
+        <update_rate>10.0</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.10</min>
+            <max>25.0</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.0</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_rplidar" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace>rplidar</namespace> <!-- No leading slash -->
+            <remapping>scan:=scan</remapping>
+          </ros>
+          <frame_name>rplidar_link</frame_name>
+        </plugin>
+      </sensor>
+    </link>
+    <joint name="rplidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>rplidar_link</child>
+      <pose>-0.06 -0.01 0.15 0 0 4.712385</pose>
+    </joint>
+  </model>
+</sdf>
