@@ -122,7 +122,7 @@
     </inertial>
   </link>
 
-  <joint name="left_rear_wheel_joint" type="continuous">
+  <joint name="left_rear_wheel_joint" type="fixed">
         <parent link="base_link"/>
         <child link="left_rear_wheel_link"/>
         <origin xyz="-0.1 0.09 -0.027" rpy="0 0 0"/>
@@ -204,6 +204,32 @@
         </geometry>
     </collision>
   </link>
+
+
+   <!-- imu -->
+    <joint name="imutobase" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="imu"/>
+    </joint>
+        
+    <link name="imu">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                    <box size="0 0 0"/>
+            </geometry>                
+            <material name= "red" >
+              <color rgba="1.0 0.0 0.0 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+            <origin xyz="0.0 0.0 0" rpy="0.0 0.0 0.0" />
+        </collision>
+    </link>
 
 
   <xacro:include filename="$(find r550_gazebo)/xacro/r550.gazebo" />
