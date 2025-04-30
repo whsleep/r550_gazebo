@@ -6,7 +6,8 @@
 
 雷达位置与实物不匹配。
 
-## ~~ gazebo自定义控制器问题 ~~ 
+## ~~gazebo自定义控制器问题~~ 
+
 两个文件，生成共享库`libr550_force_based_move.so`
 
 在`\xacro\r550.gazebo`中使用

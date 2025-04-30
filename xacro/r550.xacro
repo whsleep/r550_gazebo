@@ -6,7 +6,23 @@
   <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0" /></material>
   <material name="light_grey"><color rgba="0.75 0.75 0.75 1.0" /></material>
 
+  <xacro:macro name="cylinder_inertia" params="m r w">
+    <inertia ixx="${m*(3*r*r+w*w)/12}" ixy="0" ixz="0"
+             iyy="${m*(3*r*r+w*w)/12}" iyz="0"
+             izz="${m*r*r/2}"
+    />
+  </xacro:macro>
 
+  <xacro:property name="wheel_r" value="0.035" /> 
+  <xacro:property name="wheel_w" value="0.05" /> 
+  <xacro:property name="base_lx_f" value="0.0715" /> 
+  <xacro:property name="base_lx_r" value="0.1" /> 
+  <xacro:property name="base_ly" value="0.09" /> 
+  <xacro:property name="base_h" value="0.026" /> 
+
+
+
+<!-- 底盘 urdf -->
   <link name="base_footprint"></link>
 
   <joint name="base_link_joint" type="fixed">
@@ -39,28 +55,30 @@
   <joint name="right_front_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="right_front_wheel_link"/>
-        <origin xyz="0.0715 -0.09 -0.027" rpy="0 0 0"/>
+        <origin xyz="${base_lx_f} -${base_ly} -${base_h}" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
   </joint>
 
   <!-- Right Front Wheel Link -->
   <link name="right_front_wheel_link">
     <visual>
-        <origin xyz="0 0 0" rpy="1.570 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
         <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/fr_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
         <material name="black" />
     </visual>
     <collision>
-        <origin xyz="0 0 0" rpy="1.570 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
         <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/fr_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
     </collision>
+
     <inertial>
-        <mass value="0.1"/>
-        <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0005" iyz="0" izz="0.0005"/>
+      <origin xyz="0 0 0" rpy="0 1.570 -1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
     </inertial>
   </link>
 
@@ -68,28 +86,29 @@
   <joint name="left_front_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_front_wheel_link"/>
-        <origin xyz="0.072 0.09 -0.027" rpy="0 0 0"/>
+        <origin xyz="${base_lx_f} ${base_ly} -${base_h}" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
   </joint>
 
   <!-- Left Front Wheel Link -->
   <link name="left_front_wheel_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 -1.570 -1.570 "/>
+      <origin xyz="0 0 0" rpy="0 0 1.570"/>
         <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/fl_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
       <material name="black" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 -1.570 -1.570 "/>
+      <origin xyz="0 0 0" rpy="0 0 1.570"/>
       <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/fl_wheel_link.STL" scale="0.7 0.7 0.7"/>
       </geometry>
     </collision>
     <inertial>
-            <mass value="0.1"/>
-            <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0005" iyz="0" izz="0.0005"/>
+      <origin xyz="0 0 0" rpy="0 1.570 1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
     </inertial>
   </link>
 
@@ -97,35 +116,37 @@
  <joint name="right_rear_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="right_rear_wheel_link"/>
-        <origin xyz="-0.1 -0.09 -0.027" rpy="0 0 0"/>
+        <origin xyz="-${base_lx_r} -${base_ly} -${base_h}" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
   </joint>
 
   <!-- Right Rear Wheel Link -->
   <link name="right_rear_wheel_link">
     <visual>
-        <origin xyz="0 0 0" rpy="1.570 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
         <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/rr_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
         <material name="black" />
     </visual>
     <collision>
-        <origin xyz="0 0 0" rpy="1.570 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
         <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/rr_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
     </collision>
     <inertial>
-        <mass value="0.1"/>
-        <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0005" iyz="0" izz="0.0005"/>
+      <origin xyz="0 0 0" rpy="0 1.570 -1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
     </inertial>
+
   </link>
 
-  <joint name="left_rear_wheel_joint" type="fixed">
+  <joint name="left_rear_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_rear_wheel_link"/>
-        <origin xyz="-0.1 0.09 -0.027" rpy="0 0 0"/>
+        <origin xyz="-${base_lx_r} ${base_ly} -${base_h}" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
   </joint>
 
@@ -133,21 +154,23 @@
   <!-- Left Rear Wheel Link -->
   <link name="left_rear_wheel_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 -1.570 -1.570"/>
+      <origin xyz="0 0 0" rpy="0 0 1.570"/>
       <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+      
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/rl_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
       <material name="black" />
     </visual>
     <collision>
-        <origin xyz="0 0 0" rpy="0 -1.570 -1.570"/>
+        <origin xyz="0 0 0" rpy="0 0 1.570"/>
         <geometry>
-            <mesh filename="package://r550_gazebo/meshes/mini_4wd/roue_Mecanum.STL" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://r550_gazebo/meshes/mini_4wd/rl_wheel_link.STL" scale="0.7 0.7 0.7"/>
         </geometry>
     </collision>
     <inertial>
-        <mass value="0.1"/>
-        <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0005" iyz="0" izz="0.0005"/>
+      <origin xyz="0 0 0" rpy="0 1.570 1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
     </inertial>
   </link>
 
@@ -181,7 +204,7 @@
   <joint name="rplidar_joint" type="fixed">
         <parent link="base_link"/>
         <child link="rplidar_link"/>
-        <origin xyz="-0.06 -0.01 0.15" rpy="0 0 4.712385"/>
+        <origin xyz="0.0 0.0 0.14" rpy="0 0 4.712385"/>
   </joint>
 
   <!-- RPLIDAR Link -->
@@ -230,6 +253,29 @@
             <origin xyz="0.0 0.0 0" rpy="0.0 0.0 0.0" />
         </collision>
     </link>
+
+
+
+    <!-- 传动实现:用于连接控制器与关节 -->
+    <xacro:macro name="joint_trans" params="joint_name">
+        <!-- Transmission is important to link the joints and the controller -->
+        <transmission name="${joint_name}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint_name}_motor">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+ 
+    <!-- 每一个驱动轮都需要配置传动装置 -->
+    <xacro:joint_trans joint_name="left_rear_wheel_joint" />
+    <xacro:joint_trans joint_name="left_front_wheel_joint" />
+    <xacro:joint_trans joint_name="right_front_wheel_joint" />
+    <xacro:joint_trans joint_name="right_rear_wheel_joint" />
 
 
   <xacro:include filename="$(find r550_gazebo)/xacro/r550.gazebo" />

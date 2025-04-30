@@ -2,6 +2,8 @@
 <robot>
   <!-- All static links get collapsed down to base_link in Gazebo, so that's
        the one to apply the colour to (in Gazebo 5+). -->
+
+
 <gazebo>
       <plugin name="gazebo_ros_mecanum_diff_drive" filename="libgazebo_ros_mecanum_drive.so">
         <commandTopic>cmd_vel</commandTopic>
@@ -13,14 +15,14 @@
         <RightFront>right_front_wheel_joint</RightFront>
         <RightRear>right_rear_wheel_joint</RightRear>
         <odometryRate>20</odometryRate>      
-        <publishWheelTF>true</publishWheelTF>
+        <publishWheelTF>false</publishWheelTF>
         <publishWheelJointState>false</publishWheelJointState>
-        <WheelTorque>1</WheelTorque>
-        <WheelSeparationW>0.5</WheelSeparationW>
-        <WheelSeparationL>0.6</WheelSeparationL>
-        <wheelAccel>5</wheelAccel>
-        <wheelDiameter>0.13</wheelDiameter>
-        <publishOdom>false</publishOdom>
+        <WheelTorque>1000</WheelTorque>
+        <WheelSeparationW>${base_ly}</WheelSeparationW>
+        <WheelSeparationL>0.5*${base_lx_f+base_lx_r}</WheelSeparationL>
+        <wheelAccel>10</wheelAccel>
+        <wheelDiameter>2*${wheel_r}</wheelDiameter>
+        <publishOdom>true</publishOdom>
         <isRollerModel>true</isRollerModel>
       </plugin>
 </gazebo>
@@ -30,7 +32,7 @@
   <gazebo reference="rplidar_link">         
     <sensor type="ray" name="rplidar">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>   
+      <visualize>false</visualize>   
       <update_rate>10</update_rate>
       <ray>
         <scan>
@@ -81,7 +83,6 @@
         <stddev>0.007</stddev>
       </noise>
     </camera>
-
     <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>0.0</updateRate>
@@ -116,30 +117,20 @@
   <gazebo reference="rplidar_link">
     <material>Gazebo/Black</material>
   </gazebo>  
-
   <!-- Wheel friction to zero, as movement is handled by applying forces at the body level. -->
   <gazebo reference="right_front_wheel_link">
     <material>Gazebo/Black</material>
-    <mu1>0.5</mu1>
-    <mu2>0.3</mu2>
   </gazebo>
 
   <gazebo reference="left_front_wheel_link">
     <material>Gazebo/Black</material>
-    <mu1>0.5</mu1>
-    <mu2>0.3</mu2>
   </gazebo>
 
   <gazebo reference="right_rear_wheel_link">
     <material>Gazebo/Black</material>
-    <mu1>0.5</mu1>
-    <mu2>0.3</mu2>
   </gazebo>
 
   <gazebo reference="left_rear_wheel_link">
     <material>Gazebo/Black</material>
-    <mu1>0.5</mu1>
-    <mu2>0.3</mu2>
   </gazebo>
-
 </robot>
