@@ -229,54 +229,38 @@
   </link>
 
 
-   <!-- imu -->
-    <joint name="imutobase" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <parent link="base_link"/>
-        <child link="imu"/>
-    </joint>
-        
-    <link name="imu">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                    <box size="0 0 0"/>
-            </geometry>                
-            <material name= "red" >
-              <color rgba="1.0 0.0 0.0 1.0" />
-            </material>
-        </visual>
-        <collision>
-            <geometry>
-                <box size="0 0 0" />
-            </geometry>
-            <origin xyz="0.0 0.0 0" rpy="0.0 0.0 0.0" />
-        </collision>
-    </link>
+ <!-- IMU -->
+  <joint name="IMU_joint " type="fixed">
+    <parent link="base_link"/>
+    <child link="IMU_sensor"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
 
+  <link name="IMU_sensor">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	      <mesh filename="package://r550_gazebo/meshes/mini_4wd/IMU_sensor.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
 
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	      <mesh filename="package://r550_gazebo/meshes/mini_4wd/IMU_sensor.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
 
-    <!-- 传动实现:用于连接控制器与关节 -->
-    <xacro:macro name="joint_trans" params="joint_name">
-        <!-- Transmission is important to link the joints and the controller -->
-        <transmission name="${joint_name}_trans">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${joint_name}">
-                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${joint_name}_motor">
-                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-                <mechanicalReduction>1</mechanicalReduction>
-            </actuator>
-        </transmission>
-    </xacro:macro>
- 
-    <!-- 每一个驱动轮都需要配置传动装置 -->
-    <xacro:joint_trans joint_name="left_rear_wheel_joint" />
-    <xacro:joint_trans joint_name="left_front_wheel_joint" />
-    <xacro:joint_trans joint_name="right_front_wheel_joint" />
-    <xacro:joint_trans joint_name="right_rear_wheel_joint" />
-
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.00005" ixy="0.0" ixz="0.0"
+	             iyy="0.00005" iyz="0.0"
+	            izz="0.00005"/>
+    </inertial>
+  </link>
 
   <xacro:include filename="$(find r550_gazebo)/xacro/r550.gazebo" />
 </robot>

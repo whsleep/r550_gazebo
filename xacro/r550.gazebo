@@ -19,9 +19,9 @@
         <publishWheelJointState>false</publishWheelJointState>
         <WheelTorque>1000</WheelTorque>
         <WheelSeparationW>${base_ly}</WheelSeparationW>
-        <WheelSeparationL>0.5*${base_lx_f+base_lx_r}</WheelSeparationL>
-        <wheelAccel>10</wheelAccel>
-        <wheelDiameter>2*${wheel_r}</wheelDiameter>
+        <WheelSeparationL>${(base_lx_f+base_lx_r)/2}</WheelSeparationL>
+        <wheelAccel>100</wheelAccel>
+        <wheelDiameter>${wheel_r*2}</wheelDiameter>
         <publishOdom>true</publishOdom>
         <isRollerModel>true</isRollerModel>
       </plugin>
@@ -101,6 +101,28 @@
 </gazebo>
 
 
+  <!-- IMU sensor controller -->
+  <gazebo reference="IMU_sensor">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>false</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>IMU_sensor</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>IMU_sensor</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
   <gazebo reference="base_footprint">
     <material>Gazebo/Yellow</material>
     <gravity>true</gravity>
@@ -120,17 +142,41 @@
   <!-- Wheel friction to zero, as movement is handled by applying forces at the body level. -->
   <gazebo reference="right_front_wheel_link">
     <material>Gazebo/Black</material>
+	  <selfCollide>false</selfCollide>
+      <gravity>true</gravity>
+      <mu1>0.6</mu1>
+      <mu2>0.4</mu2>
+      <kp>1e3</kp>
+      <kd>1e2</kd>
   </gazebo>
 
   <gazebo reference="left_front_wheel_link">
     <material>Gazebo/Black</material>
+	  <selfCollide>false</selfCollide>
+      <gravity>true</gravity>
+      <mu1>0.6</mu1>
+      <mu2>0.4</mu2>
+      <kp>1e3</kp>
+      <kd>1e2</kd>
   </gazebo>
 
   <gazebo reference="right_rear_wheel_link">
     <material>Gazebo/Black</material>
+	  <selfCollide>false</selfCollide>
+      <gravity>true</gravity>
+      <mu1>0.6</mu1>
+      <mu2>0.4</mu2>
+      <kp>1e3</kp>
+      <kd>1e2</kd>
   </gazebo>
 
   <gazebo reference="left_rear_wheel_link">
     <material>Gazebo/Black</material>
+	  <selfCollide>false</selfCollide>
+      <gravity>true</gravity>
+      <mu1>0.6</mu1>
+      <mu2>0.4</mu2>
+      <kp>1e3</kp>
+      <kd>1e2</kd>
   </gazebo>
 </robot>

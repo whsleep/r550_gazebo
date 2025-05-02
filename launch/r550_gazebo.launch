@@ -20,5 +20,4 @@
   <!-- Spawn the robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
         args="-urdf -model r550 -param robot_description -x 0 -y 0 -z 0.5" />
-
 </launch>
