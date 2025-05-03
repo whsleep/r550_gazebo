@@ -3,7 +3,6 @@
   <!-- All static links get collapsed down to base_link in Gazebo, so that's
        the one to apply the colour to (in Gazebo 5+). -->
 
-
 <gazebo>
       <plugin name="gazebo_ros_mecanum_diff_drive" filename="libgazebo_ros_mecanum_drive.so">
         <commandTopic>cmd_vel</commandTopic>
@@ -33,7 +32,7 @@
     <sensor type="ray" name="rplidar">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>   
-      <update_rate>10</update_rate>
+      <update_rate>20</update_rate>
       <ray>
         <scan>
           <horizontal>
@@ -100,23 +99,22 @@
   </sensor>
 </gazebo>
 
-
   <!-- IMU sensor controller -->
   <gazebo reference="IMU_sensor">
     <gravity>true</gravity>
     <sensor name="imu_sensor" type="imu">
       <always_on>true</always_on>
-      <update_rate>100</update_rate>
-      <visualize>false</visualize>
+      <update_rate>20</update_rate>
+      <visualize>true</visualize>
       <topic>__default_topic__</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
         <topicName>imu</topicName>
         <bodyName>IMU_sensor</bodyName>
-        <updateRateHZ>10.0</updateRateHZ>
+        <updateRateHZ>30.0</updateRateHZ>
         <gaussianNoise>0.0</gaussianNoise>
         <xyzOffset>0 0 0</xyzOffset>
         <rpyOffset>0 0 0</rpyOffset>
-        <frameName>IMU_sensor</frameName>
+        <frameName>imu</frameName>
         <initialOrientationAsReference>false</initialOrientationAsReference>
       </plugin>
       <pose>0 0 0 0 0 0</pose>

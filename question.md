@@ -1,6 +1,6 @@
 # TODO
 
-## 模型与实物匹配
+## ~~模型与实物匹配~~
 
 ![RVIZ](https://github.com/whsleep/r550_gazebo/blob/main/picture/rviz.png)
 
@@ -37,8 +37,13 @@
 和上述代码均可能存在问题。
 具体 [GIF](https://github.com/whsleep/r550_gazebo/blob/main/picture/gzebo.gif)
 
-## 使用新的麦克纳姆底盘控制器
+## ~~使用新的麦克纳姆底盘控制器~~
 [gazebo_mecanum_plugins](https://github.com/qaz9517532846/gazebo_mecanum_plugins/tree/ros1-noetic)
 
-暂时无法正常运行
-## 待添加IMU插件
+~~暂时无法正常运行~~
+
+`2025-5-2` 已正常运行
+
+## ~~待添加IMU插件~~
+## ~~添加ekf位姿估计~~
+## 使用move_base进行建图导航
