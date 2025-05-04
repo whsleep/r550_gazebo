@@ -16,10 +16,10 @@
         <odometryRate>20</odometryRate>      
         <publishWheelTF>false</publishWheelTF>
         <publishWheelJointState>false</publishWheelJointState>
-        <WheelTorque>1000</WheelTorque>
+        <WheelTorque>100</WheelTorque>
         <WheelSeparationW>${base_ly}</WheelSeparationW>
         <WheelSeparationL>${(base_lx_f+base_lx_r)/2}</WheelSeparationL>
-        <wheelAccel>100</wheelAccel>
+        <wheelAccel>50</wheelAccel>
         <wheelDiameter>${wheel_r*2}</wheelDiameter>
         <publishOdom>true</publishOdom>
         <isRollerModel>true</isRollerModel>
@@ -55,7 +55,7 @@
       </ray>
       <plugin name="gazebo_rplidar" filename="libgazebo_ros_laser.so">
         <topicName>/scan</topicName>
-        <frameName>laser</frameName>
+        <frameName>rplidar_link</frameName>
       </plugin>
     </sensor>
   </gazebo>

@@ -14,6 +14,11 @@ sudo apt-get install -y libgazebo11-dev
 sudo apt-get install -y gazebo11
 
 sudo apt-get install ros-noetic-robot-pose-ekf
+
+sudo apt install ros-noetic-gmapping
+
+sudo apt install ros-noetic-map-server
+
 ```
 
 ### Create directory
@@ -37,10 +42,16 @@ git clone https://github.com/whsleep/r550_gazebo.git
 ```shell
 catkin_make
 ```
-## Run
+## Run Gazebo simulation
 ```shell
-roslaunch r550_gazebo r550_gazebo.launch
+roslaunch r550_gazebo r550_gazebo.launc
 ```
+
+## Run Gmapping
+```shell
+roslaunch r550_gazebo r550_gmapping.launc
+```
+
 # [TODO](https://github.com/whsleep/r550_gazebo/blob/main/question.md)
 # REF
 [r550-ros-bot-humble](https://github.com/910514/r550-ros-bot-humble)

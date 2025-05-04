@@ -1,0 +1,42 @@
+<!-- move base -->
+<launch>
+
+  <arg name="planner_name" default="teb"/>
+  <param name="use_sim_time" value="true" />
+
+<node pkg="map_server" name="map_server" type="map_server"/>
+
+   <!-- <include file="$(find r550_gazebo)/launch/include/amcl.launch" /> -->
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="footprint_padding" value="0.01" />
+    <param name="controller_frequency" value="5.0" />
+    <param name="controller_patience" value="3.0" />
+    <param name="oscillation_timeout" value="30.0" />
+    <param name="oscillation_distance" value="0.5" />
+    <param name="planner_patience" value="1" />
+    <param name="controller_patience" value="1" /> 
+    <param name="recovery_behavior_enabled" value="true" />
+
+
+    <param if="$(eval planner_name == 'teb')" name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <param if="$(eval planner_name == 'dwa')" name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
+
+    <rosparam file="$(find r550_gazebo)/param/$(arg planner_name)/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find r550_gazebo)/param/$(arg planner_name)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find r550_gazebo)/param/$(arg planner_name)/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find r550_gazebo)/param/$(arg planner_name)/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find r550_gazebo)/param/$(arg planner_name)/local_planner_params.yaml" command="load" />
+    
+    <!-- frame -->
+    <param name="global_costmap/global_frame" value="map"/>
+    <param name="global_costmap/robot_base_frame" value="base_footprint"/>
+    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="scan"/>  
+    <param name="local_costmap/global_frame" value="odom"/>
+    <param name="local_costmap/robot_base_frame" value="base_footprint"/>
+    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="scan"/>
+    
+  </node>
+
+</launch>
