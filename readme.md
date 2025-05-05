@@ -1,7 +1,7 @@
 # R550_GAZEBO
 ## DEMO
 
-![Rviz](https://github.com/whsleep/r550_gazebo/blob/main/picture/rviz.png)
+![Rviz](https://github.com/whsleep/r550_gazebo/blob/main/picture/navigate.png)
 
 # How to RUN:
 ## Before run
@@ -18,6 +18,10 @@ sudo apt-get install ros-noetic-robot-pose-ekf
 sudo apt install ros-noetic-gmapping
 
 sudo apt install ros-noetic-map-server
+
+sudo apt install ros-noetic-navigation
+
+sudo apt-get install ros-noetic-move-base
 
 ```
 
@@ -44,12 +48,17 @@ catkin_make
 ```
 ## Run Gazebo simulation
 ```shell
-roslaunch r550_gazebo r550_gazebo.launc
+roslaunch r550_gazebo r550_gazebo.launch
 ```
 
 ## Run Gmapping
 ```shell
-roslaunch r550_gazebo r550_gmapping.launc
+roslaunch r550_gazebo r550_gmapping.launch
+```
+
+## Run Navigate
+```shell
+roslaunch r550_gazebo r550_navigate.launch
 ```
 
 # [TODO](https://github.com/whsleep/r550_gazebo/blob/main/question.md)

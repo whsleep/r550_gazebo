@@ -17,13 +17,9 @@
   <!-- Load robot description -->
   <include file="$(find r550_gazebo)/launch/r550_rviz.launch" />
 
-  <!-- <include file="$(find r550_gazebo)/launch/include/pose_ekf.launch" /> -->
 
   <!-- Spawn the robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
         args="-urdf -model r550 -param robot_description -x 0 -y 0 -z 0.5" />
 
- <include file="$(find r550_gazebo)/launch/include/pose_ekf.launch" />
-
-  <include file="$(find r550_gazebo)/launch/include/gmapping.launch" />
 </launch>

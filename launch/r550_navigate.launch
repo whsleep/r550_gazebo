@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+ <include file="$(find r550_gazebo)/launch/r550_gazebo.launch" />
+ <include file="$(find r550_gazebo)/launch/include/pose_ekf.launch" />
+ <include file="$(find r550_gazebo)/launch/include/amcl.launch" />
+ <include file="$(find r550_gazebo)/launch/include/move_base_sim.launch" />
+
+</launch>

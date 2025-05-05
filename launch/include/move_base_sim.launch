@@ -4,9 +4,7 @@
   <arg name="planner_name" default="teb"/>
   <param name="use_sim_time" value="true" />
 
-<node pkg="map_server" name="map_server" type="map_server"/>
-
-   <!-- <include file="$(find r550_gazebo)/launch/include/amcl.launch" /> -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find r550_gazebo)/maps/museum.yaml" />
 
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
@@ -32,10 +30,10 @@
     <!-- frame -->
     <param name="global_costmap/global_frame" value="map"/>
     <param name="global_costmap/robot_base_frame" value="base_footprint"/>
-    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="scan"/>  
-    <param name="local_costmap/global_frame" value="odom"/>
+    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="rplidar_link"/>  
+    <param name="local_costmap/global_frame" value="odom_combined"/>
     <param name="local_costmap/robot_base_frame" value="base_footprint"/>
-    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="scan"/>
+    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="rplidar_link"/>
     
   </node>
 

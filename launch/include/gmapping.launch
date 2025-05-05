@@ -1,7 +1,7 @@
 <!-- move base -->
 <launch>
   <!-- using Gmapping -->
-   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
+   <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen" >
       <param name="map_frame" value="map"/>
       <param name="odom_frame" value="odom_combined"/>
       <param name="base_frame" value="base_footprint"/>
