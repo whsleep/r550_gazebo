@@ -23,6 +23,8 @@ sudo apt install ros-noetic-navigation
 
 sudo apt-get install ros-noetic-move-base
 
+sudo apt-get install ros-noetic-explore-lite
+
 ```
 
 ### Create directory
@@ -59,6 +61,11 @@ roslaunch r550_gazebo r550_gmapping.launch
 ## Run Navigate
 ```shell
 roslaunch r550_gazebo r550_navigate.launch
+```
+
+## Run Explore
+```shell
+roslaunch r550_gazebo r550_explore.launch
 ```
 
 # [TODO](https://github.com/whsleep/r550_gazebo/blob/main/question.md)

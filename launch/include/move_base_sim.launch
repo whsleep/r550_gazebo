@@ -4,9 +4,6 @@
   <arg name="planner_name" default="teb"/>
   <param name="use_sim_time" value="true" />
 
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find r550_gazebo)/maps/museum.yaml" />
-
-
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="footprint_padding" value="0.01" />
     <param name="controller_frequency" value="5.0" />
@@ -19,6 +16,8 @@
 
 
     <param if="$(eval planner_name == 'teb')" name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <!-- <param if="$(eval planner_name == 'teb')" name="base_local_planner" value="tvdf_planner/LocalPlanner" /> -->
+
     <param if="$(eval planner_name == 'dwa')" name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
 
     <rosparam file="$(find r550_gazebo)/param/$(arg planner_name)/costmap_common_params.yaml" command="load" ns="global_costmap" />
