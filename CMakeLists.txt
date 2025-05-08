@@ -120,7 +120,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 catkin_package(
     CATKIN_DEPENDS roscpp std_msgs geometry_msgs nav_msgs tf message_runtime
-    INCLUDE_DIRS include
+    INCLUDE_DIRS 
     LIBRARIES
 )
 

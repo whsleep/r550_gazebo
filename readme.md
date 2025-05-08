@@ -1,7 +1,10 @@
 # R550_GAZEBO
-## DEMO
+## Demos
 
-![Rviz](https://github.com/whsleep/r550_gazebo/blob/main/picture/navigate.png)
+| Gmapping | <img src="https://github.com/whsleep/r550_gazebo/blob/main/picture/mapping.png"  height ="400" /> |
+| --- | --- |
+| Navigate | <img src="https://github.com/whsleep/r550_gazebo/blob/main/picture/navigate.png"  height ="400" /> |
+| Explore | <img src="https://github.com/whsleep/r550_gazebo/blob/main/picture/explore.gif"  height ="400" /> |
 
 # How to RUN:
 ## Before run
@@ -48,22 +51,21 @@ git clone https://github.com/whsleep/r550_gazebo.git
 ```shell
 catkin_make
 ```
-## Run Gazebo simulation
-```shell
-roslaunch r550_gazebo r550_gazebo.launch
-```
+## Run
 
-## Run Gmapping
+**There are three demonstrations available, and you need to choose one.**
+
+### run Gmapping
 ```shell
 roslaunch r550_gazebo r550_gmapping.launch
 ```
 
-## Run Navigate
+### run Navigate
 ```shell
 roslaunch r550_gazebo r550_navigate.launch
 ```
 
-## Run Explore
+### run Explore
 ```shell
 roslaunch r550_gazebo r550_explore.launch
 ```
@@ -75,3 +77,5 @@ roslaunch r550_gazebo r550_explore.launch
 [nexus_4wd_mecanum_simulator](https://github.com/RBinsonB/nexus_4wd_mecanum_simulator)
 
 [gazebo_mecanum_plugins](https://github.com/qaz9517532846/gazebo_mecanum_plugins/tree/ros1-noetic)
+
+[m-explore](https://github.com/hrnr/m-explore)
