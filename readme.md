@@ -26,6 +26,8 @@ sudo apt install ros-noetic-navigation
 
 sudo apt-get install ros-noetic-move-base
 
+sudo apt-get install ros-noetic-teb-local-planner
+
 sudo apt-get install ros-noetic-explore-lite
 
 ```
