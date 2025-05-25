@@ -42,7 +42,7 @@ cd src
 
 ### Install driver
 ```shell
-git clone https://github.com/qaz9517532846/gazebo_mecanum_plugins.git -b ros1-noetic
+git clone https://github.com/whsleep/gazebo_mecanum_plugins.git -b ros1-noetic
 ```
 
 ## Clone code
