@@ -1,10 +1,10 @@
 # R550_GAZEBO
 ## Demos
 
-| Gmapping | <img src="https://github.com/whsleep/r550_gazebo/blob/main/picture/mapping.png"  height ="400" /> |
+| Gmapping | <img src="picture/mapping.png"  height ="400" /> |
 | --- | --- |
-| Navigate | <img src="https://github.com/whsleep/r550_gazebo/blob/main/picture/navigate.png"  height ="400" /> |
-| Explore | <img src="https://github.com/whsleep/r550_gazebo/blob/main/picture/explore.gif"  height ="400" /> |
+| Navigate | <img src="picture/navigate.png"  height ="400" /> |
+| Explore | <img src="picture/explore.gif"  height ="400" /> |
 
 # How to RUN:
 ## Before run
