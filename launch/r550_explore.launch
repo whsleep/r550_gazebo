@@ -9,5 +9,4 @@
 
  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find r550_gazebo)/rviz/explore.rviz" />
 
-
 </launch>
