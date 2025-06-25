@@ -28,8 +28,8 @@
 
 
  <!-- laser -->
-  <gazebo reference="rplidar_link">         
-    <sensor type="ray" name="rplidar">
+  <gazebo reference="laser">         
+    <sensor type="ray" name="laser">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>   
       <update_rate>20</update_rate>
@@ -55,7 +55,7 @@
       </ray>
       <plugin name="gazebo_rplidar" filename="libgazebo_ros_laser.so">
         <topicName>/scan</topicName>
-        <frameName>rplidar_link</frameName>
+        <frameName>laser</frameName>
       </plugin>
     </sensor>
   </gazebo>

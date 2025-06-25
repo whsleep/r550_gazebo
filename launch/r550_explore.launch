@@ -1,9 +1,16 @@
 <launch>
 
+ <!-- 实物/仿真 -->
+ <arg name="is_sim" default="true"/>
+
+<!-- 仿真需要执行的内容 -->
+<group if="$(arg is_sim)">
  <include file="$(find r550_gazebo)/launch/r550_gazebo.launch" />
  <include file="$(find r550_gazebo)/launch/include/pose_ekf.launch" />
+</group>
+
  <include file="$(find r550_gazebo)/launch/include/gmapping.launch" />
- <include file="$(find r550_gazebo)/launch/include/move_base_sim.launch" />
+ <include file="$(find r550_gazebo)/launch/include/move_base_sim.launch"/>
 
  <include file="$(find r550_gazebo)/launch/include/explore.launch" />
 

@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="planner_name" default="teb"/>
-  <param name="use_sim_time" value="true" />
+  <!-- <arg name="use_sim_time" default="true"/> -->
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="footprint_padding" value="0.01" />
@@ -29,10 +29,10 @@
     <!-- frame -->
     <param name="global_costmap/global_frame" value="map"/>
     <param name="global_costmap/robot_base_frame" value="base_footprint"/>
-    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="rplidar_link"/>  
+    <param name="global_costmap/laser_scan_sensor/sensor_frame" value="laser"/>  
     <param name="local_costmap/global_frame" value="odom_combined"/>
     <param name="local_costmap/robot_base_frame" value="base_footprint"/>
-    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="rplidar_link"/>
+    <param name="local_costmap/laser_scan_sensor/sensor_frame" value="laser"/>
     
   </node>
 
