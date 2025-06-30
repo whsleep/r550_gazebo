@@ -10,26 +10,7 @@
 ## Before run
 
 ```shell
-sudo apt-get install ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control ros-noetic-ros-controllers
-
-sudo apt-get install -y libgazebo11-dev
-
-sudo apt-get install -y gazebo11
-
-sudo apt-get install ros-noetic-robot-pose-ekf
-
-sudo apt install ros-noetic-gmapping
-
-sudo apt install ros-noetic-map-server
-
-sudo apt install ros-noetic-navigation
-
-sudo apt-get install ros-noetic-move-base
-
-sudo apt-get install ros-noetic-teb-local-planner
-
-sudo apt-get install ros-noetic-explore-lite
-
+bash install_requirements.sh 
 ```
 
 ### Create directory
