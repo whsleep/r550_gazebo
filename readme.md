@@ -21,14 +21,10 @@ mkdir src
 cd src
 ```
 
-### Install driver
-```shell
-git clone https://github.com/whsleep/gazebo_mecanum_plugins.git -b ros1-noetic
-```
-
 ## Clone code
 ```shell
 git clone https://github.com/whsleep/r550_gazebo.git
+git submodule update --init
 ```
 ## Build
 ```shell
