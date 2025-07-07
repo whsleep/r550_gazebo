@@ -1,10 +1,10 @@
 # R550_GAZEBO
 ## Demos
 
-| Gmapping | <img src="picture/mapping.png"  height ="400" /> |
+| Gmapping | <img src="gazebo_sim/picture/mapping.png"  height ="400" /> |
 | --- | --- |
-| Navigate | <img src="picture/navigate.png"  height ="400" /> |
-| Explore | <img src="picture/explore.gif"  height ="400" /> |
+| Navigate | <img src="gazebo_sim/picture/navigate.png"  height ="400" /> |
+| Explore | <img src="gazebo_sim/picture/explore.gif"  height ="400" /> |
 
 # How to RUN:
 ## Before run
@@ -56,7 +56,7 @@ roslaunch r550_gazebo r550_forRL.launch
 
 # Some size information
 
-<img src="picture/05429.png"  height ="400" />
+<img src="gazebo_sim/picture/05429.png"  height ="400" />
 
 # [TODO](https://github.com/whsleep/r550_gazebo/blob/main/question.md)
 # REF
