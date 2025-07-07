@@ -1,4 +1,11 @@
 # R550_GAZEBO
+
+<p align="center">
+    <img width="100px" height="20px" src="https://img.shields.io/badge/Ubuntu-20.04-orange?logo=Ubuntu&Ubuntu-20.04"
+        alt="ubuntu" />
+    <img width="100px" height="20px" src="https://img.shields.io/badge/ROS-noetic-blue?logo=ROS&ROS=noetic" alt="ROS" />
+</p>
+
 ## Demos
 
 | Gmapping | <img src="gazebo_sim/picture/mapping.png"  height ="400" /> |
@@ -24,7 +31,8 @@ cd src
 ## Clone code
 ```shell
 git clone https://github.com/whsleep/r550_gazebo.git
-git submodule update --init
+cd r550_gazebo
+git submodule update --init --recursive
 ```
 ## Build
 ```shell
