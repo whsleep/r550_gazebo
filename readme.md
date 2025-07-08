@@ -14,13 +14,8 @@
 | Explore | <img src="gazebo_sim/picture/explore.gif"  height ="400" /> |
 
 # How to RUN:
-## Before run
 
-```shell
-bash install_requirements.sh 
-```
-
-### Create directory
+## Create directory
 ```shell
 mkdir catkin_ws
 cd catkin_ws
@@ -28,16 +23,17 @@ mkdir src
 cd src
 ```
 
-## Clone code
+## Clone && Build
 ```shell
 git clone https://github.com/whsleep/r550_gazebo.git
 cd r550_gazebo
+bash install_requirements.sh 
 git submodule update --init --recursive
-```
-## Build
-```shell
+cd ../../
 catkin_make
+source ./devel/setup.bash
 ```
+
 ## Run
 
 **There are three demonstrations available, and you need to choose one.**
