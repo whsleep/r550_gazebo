@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<robot name="wheeltec_r550" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- 1. 材质定义（URDF材质，Gazebo材质在materials.xacro中定义） -->
+  <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
+  <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0" /></material>
+  <material name="light_grey"><color rgba="0.75 0.75 0.75 1.0" /></material>
+
+  <!-- 2. 惯性计算宏定义 -->
+  <xacro:macro name="cylinder_inertia" params="m r w">
+    <inertia ixx="${m*(3*r*r+w*w)/12}" ixy="0" ixz="0"
+             iyy="${m*(3*r*r+w*w)/12}" iyz="0"
+             izz="${m*r*r/2}"
+    />
+  </xacro:macro>
+
+  <!-- 3. 尺寸参数定义 -->
+  <xacro:property name="wheel_r" value="0.035" /> 
+  <xacro:property name="wheel_w" value="0.05" /> 
+  <xacro:property name="base_lx_f" value="0.0715" /> 
+  <xacro:property name="base_lx_r" value="0.1" /> 
+  <xacro:property name="base_ly" value="0.09" /> 
+  <xacro:property name="base_h" value="0.026" /> 
+
+  <!-- 4. Link与Joint定义（底座、车轮、传感器） -->
+  <link name="base_footprint"></link>
+
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/base_link.STL"/>
+        </geometry>
+        <material name="light_grey" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/base_link.STL"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <mass value="2.5"/>
+        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+  
+  <!-- 右前轮Joint与Link -->
+  <joint name="right_front_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_front_wheel_link"/>
+        <origin xyz="${base_lx_f} -${base_ly} -${base_h}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="right_front_wheel_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/fr_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+        <material name="black" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/fr_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.570 -1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
+    </inertial>
+  </link>
+
+  <!-- 左前轮Joint与Link -->
+  <joint name="left_front_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_front_wheel_link"/>
+        <origin xyz="${base_lx_f} ${base_ly} -${base_h}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="left_front_wheel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.570"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/fl_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 1.570"/>
+      <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/fl_wheel_link.STL" scale="0.7 0.7 0.7"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.570 1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
+    </inertial>
+  </link>
+
+  <!-- 右后轮Joint与Link -->
+  <joint name="right_rear_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_rear_wheel_link"/>
+        <origin xyz="-${base_lx_r} -${base_ly} -${base_h}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="right_rear_wheel_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/rr_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+        <material name="black" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 -1.570"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/rr_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.570 -1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
+    </inertial>
+  </link>
+
+  <!-- 左后轮Joint与Link -->
+  <joint name="left_rear_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_rear_wheel_link"/>
+        <origin xyz="-${base_lx_r} ${base_ly} -${base_h}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="left_rear_wheel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.570"/>
+      <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/rl_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+      <material name="black" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 1.570"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/rl_wheel_link.STL" scale="0.7 0.7 0.7"/>
+        </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.570 1.570"/>
+      <mass value="0.1" />
+      <xacro:cylinder_inertia m="0.1" r="0.035" w="0.05" />
+    </inertial>
+  </link>
+
+  <!-- 相机（C70）Joint与Link -->
+  <joint name="c70_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="c70_link"/>
+        <origin xyz="0.13 0 0.1" rpy="0 0 0"/>
+  </joint>
+
+  <link name="c70_link">
+    <inertial>
+        <mass value="0.05"/>
+        <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/camera_link.STL"/>
+        </geometry>
+        <material name="dark_grey" />
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/camera_link.STL"/>
+        </geometry>
+    </collision>
+  </link>
+
+  <!-- 激光雷达（rplidar）Joint与Link -->
+  <joint name="rplidar_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser"/>
+        <origin xyz="0.0 0.0 0.14" rpy="0 0 4.712385"/>
+  </joint>
+
+  <link name="laser">
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 4.712385"/>
+            <geometry>
+                <mesh filename="package://gazebo_sim_humble/meshes/rplidar_link.STL"/>
+            </geometry>
+            <material name="black" />
+        </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 4.712385"/>
+        <geometry>
+            <mesh filename="package://gazebo_sim_humble/meshes/rplidar_link.STL"/>
+        </geometry>
+    </collision>
+  </link>
+
+  <!-- IMU Joint与Link -->
+  <joint name="IMU_joint" type="fixed"> <!-- 修复原文件中Joint名称后的空格 -->
+    <parent link="base_link"/>
+    <child link="IMU_sensor"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="IMU_sensor">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	      <mesh filename="package://gazebo_sim_humble/meshes/IMU_sensor.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	      <mesh filename="package://gazebo_sim_humble/meshes/IMU_sensor.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.00005" ixy="0.0" ixz="0.0"
+	             iyy="0.00005" iyz="0.0"
+	            izz="0.00005"/>
+    </inertial>
+  </link>
+</robot>

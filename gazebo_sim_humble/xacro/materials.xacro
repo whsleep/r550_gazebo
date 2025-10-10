@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- 底座足迹（base_footprint）材质：黄色 -->
+  <gazebo reference="base_footprint">
+    <material>Gazebo/Yellow</material>
+    <gravity>true</gravity>
+  </gazebo>
+
+  <!-- 底座链接（base_link）材质：灰色 -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- 相机链接（c70_link）材质：黑色 -->
+  <gazebo reference="c70_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- 激光雷达链接（rplidar_link）材质：黑色 -->
+  <gazebo reference="rplidar_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+</robot>

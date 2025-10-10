@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot name="r550_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- 关键：用$(find)指定功能包和子文件路径，避免相对路径问题 -->
+  <xacro:include filename="$(find gazebo_sim_humble)/xacro/robot_structure.xacro" />
+  <xacro:include filename="$(find gazebo_sim_humble)/xacro/sensors.xacro" />
+  <xacro:include filename="$(find gazebo_sim_humble)/xacro/materials.xacro" /> 
+  <xacro:include filename="$(find gazebo_sim_humble)/xacro/ros2_control.xacro" />
+</robot>

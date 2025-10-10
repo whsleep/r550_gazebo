@@ -1,3 +1,3 @@
-[submodule "gazebo_mecanum_plugins"]
-	path = gazebo_mecanum_plugins
-	url = https://github.com/whsleep/gazebo_mecanum_plugins.git
+[submodule "mecanum_controller"]
+	path = mecanum_controller
+	url = https://github.com/roboTHIx/mecanum_controller.git
