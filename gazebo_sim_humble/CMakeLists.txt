@@ -23,7 +23,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(DIRECTORY xacro launch meshes config world
+install(DIRECTORY xacro launch meshes config world iscas_museum
   DESTINATION share/${PROJECT_NAME}
 )
 

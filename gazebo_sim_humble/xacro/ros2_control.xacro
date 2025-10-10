@@ -36,9 +36,9 @@
   </ros2_control>
 
   <!-- Gazebo 驱动插件：加载ros2_control配置文件 -->
-  <!-- <gazebo>
+  <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <parameters>$(find example_description)/config/r550.yaml</parameters>
+      <parameters>$(find gazebo_sim_humble)/config/r550.yaml</parameters>
     </plugin>
-  </gazebo> -->
+  </gazebo>
 </robot>

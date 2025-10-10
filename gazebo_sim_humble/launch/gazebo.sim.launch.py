@@ -58,7 +58,7 @@ def generate_launch_description():
         executable="spawner",
         arguments=[
             "joint_state_broadcaster",  # 必须启动，用于发布关节状态
-            # "diff_drive_controller",   # 若为差速机器人，后续配置后取消注释
+            "mecanum_controller",   # 若为差速机器人，后续配置后取消注释
         ],
         output='screen'  # 打印控制器启动日志
     )
@@ -68,6 +68,5 @@ def generate_launch_description():
         action_launch_robot,        # 1. 先启动Gazebo
         node_robot_state_publisher, # 2. 再发布机器人状态（TF）
         spawn_entity,               # 3. 在Gazebo中生成机器人
-        
-        # start_controllers           # 4. 启动控制器（取消注释启用）
+        start_controllers           # 4. 启动控制器（取消注释启用）
     ])

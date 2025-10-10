@@ -146,13 +146,6 @@
               <size>20 22</size>
             </plane>
           </geometry>
-          <material>
-            <script>
-              <uri>../ISCAS_groundplane/materials/scripts</uri>
-              <uri>../ISCAS_groundplane/materials/textures</uri>
-              <name>ISCAS_groundplane/Image</name>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
